@@ -1,23 +1,20 @@
 terraform {
   required_providers {
     azurerm = {
-        source = "hashicorp/azurerm"
-        version = "~> 4.8.0"
+      source  = "hashicorp/azurerm"
+      version = "~> 4.8.0"
     }
   }
   required_version = ">=1.9.0"
 }
 
 provider "azurerm" {
-    features {
-      
-    }
-  
+  features {}
 }
 
 variable "storage_account_name" {
-type = string
-default = vidhya101-stg
+  type    = string
+  default = "vidhya101stg" # ✅ all lowercase, valid name
 }
 
 resource "azurerm_resource_group" "example" {
@@ -26,10 +23,9 @@ resource "azurerm_resource_group" "example" {
 }
 
 resource "azurerm_storage_account" "example" {
- 
   name                     = var.storage_account_name
   resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location # implicit dependency
+  location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
