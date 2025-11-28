@@ -14,12 +14,12 @@ provider "azurerm" {
 
 variable "storage_account_name" {
   type    = string
-  default = "vidhya101stg" # ✅ all lowercase, valid name
+  default = "vidhya101stg"
 }
 
 resource "azurerm_resource_group" "example" {
   name     = "example-resources"
-  location = "West Europe"
+  location = "canadacentral"   # ✅ changed to allowed region
 }
 
 resource "azurerm_storage_account" "example" {
