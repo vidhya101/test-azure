@@ -17,6 +17,7 @@ provider "azurerm" {
 
 variable "storage_account_name" {
 type = string
+default = vidhya101-stg
 }
 
 resource "azurerm_resource_group" "example" {
